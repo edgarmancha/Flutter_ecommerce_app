@@ -2,10 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shopmk/myappbar.dart';
 import 'package:shopmk/widgets/categories.dart';
-import 'package:shopmk/widgets/top%20sellers/topseller.dart';
-
 import '../utils/utils.dart';
 import '../widgets/bottom_navbar.dart';
+import '../widgets/top sellers/items/bicycle.dart';
+import '../widgets/top sellers/items/fridge.dart';
+import '../widgets/top sellers/items/item.dart';
+import '../widgets/top sellers/items/microwave.dart';
+import '../widgets/top sellers/items/mugs.dart';
+import '../widgets/top sellers/items/pots.dart';
+import '../widgets/top sellers/items/spoons.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -83,32 +88,35 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             //top sellers
             const SizedBox(height: 15),
-            CarouselSlider(
-              options: CarouselOptions(
-                autoPlay: true,
-                height: 130,
-                // aspectRatio: 16 / 9,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: true,
-                autoPlayInterval: const Duration(seconds: 7),
-              ),
-              items: sliderImages.map((image) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(image),
-                          fit: BoxFit.cover,
+            SizedBox(
+              height: 130,
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+                  height: 130,
+                  // aspectRatio: 16 / 9,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: true,
+                  autoPlayInterval: const Duration(seconds: 7),
+                ),
+                items: sliderImages.map((image) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: NetworkImage(image),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
             ),
             const SizedBox(height: 15),
 
@@ -133,8 +141,43 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
-                    children: const [
-                      TopSellers(),
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Expanded(child: Kettle()),
+                          SizedBox(width: 10),
+                          Expanded(child: Spoons()),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Expanded(child: Pots()),
+                          SizedBox(width: 10),
+                          Expanded(child: Bicycles()),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Expanded(child: Mugs()),
+                          SizedBox(width: 10),
+                          Expanded(child: Microwave()),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Expanded(child: Fridge()),
+                          SizedBox(width: 10),
+                          Expanded(child: Spoons()),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shopmk/categories.dart';
 import 'package:shopmk/screens/cart.dart';
 import 'package:shopmk/screens/checkout.dart';
+import 'package:shopmk/screens/dashboard.dart';
 import 'package:shopmk/screens/itemdetails.dart';
 import 'package:shopmk/screens/signin.dart';
 import 'package:shopmk/screens/signup.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SignInPage(),
+        '/dashboard': (context) => const DashboardPage(),
         '/signUp': (context) => const SignUpPage(),
         '/categories': (context) => const Categories(),
         '/cart': (context) => const CartPage(),
